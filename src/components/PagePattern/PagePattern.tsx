@@ -6,7 +6,7 @@ type Props = {
   name?: string,
 }
 
-function PagePattern({name, content}: Props): JSX.Element {
+function PagePattern({content}: Props): JSX.Element {
   return (
         <Container
       sx={{
