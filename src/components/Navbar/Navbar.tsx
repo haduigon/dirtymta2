@@ -5,11 +5,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './Navbar.module.css';
-
-const pages = [['Who we are'], ['Services and benefits'], ['Whom it is needed for'], ['Contact us']];
+import { pages } from '../../data/pages';
+import Logo from '../Logo';
 
 function Navbar() {
-  const router = useRouter(); // Next.js router to handle active link
+  const router = useRouter();
 
   return (
     <Paper elevation={3}>
@@ -37,7 +37,7 @@ function Navbar() {
               component="a"
               sx={{
                 mr: 2,
-                display: { xs: 'none', md: 'flex' },
+                display: { md: 'flex' },
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
@@ -45,7 +45,7 @@ function Navbar() {
                 textDecoration: 'none',
               }}
             >
-              My Navbar
+              <Logo />
             </Typography>
             <Box
               sx={{
@@ -56,10 +56,26 @@ function Navbar() {
                 },
               }}
             >
-              {/* Using Link from next/link for Next.js navigation */}
-              <Link href="/" passHref>
+              {pages.map((page) => (
+                <Link
+                  href={page[1]}
+                  passHref
+                  className={router.pathname === page[1] ? styles.active : styles.inactive}
+                  key={page[1]}
+                >
                 <Button
-                  className={router.pathname === '/' ? styles.active : styles.inactive}
+                  
+                  sx={{
+                    color: router.pathname === page[1] ? 'white' : 'inherit',
+                  }}
+                >
+                  {page[0]}
+                </Button>
+              </Link>
+              ))}
+              {/* <Link href="/" passHref className={router.pathname === '/' ? styles.active : styles.inactive}>
+                <Button
+                  
                   sx={{
                     color: router.pathname === '/' ? 'white' : 'inherit',
                   }}
@@ -67,16 +83,16 @@ function Navbar() {
                   Home
                 </Button>
               </Link>
-              <Link href="/services" passHref>
+              <Link href="/services" passHref className={router.pathname === '/services' ? styles.active : styles.inactive}>
                 <Button
-                  className={router.pathname === '/services' ? styles.active : styles.inactive}
+                  
                   sx={{
                     color: router.pathname === '/services' ? 'white' : 'inherit',
                   }}
                 >
                   Services & benefits
                 </Button>
-              </Link>
+              </Link> */}
             </Box>
           </Toolbar>
         </Container>
