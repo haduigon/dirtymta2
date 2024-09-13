@@ -1,17 +1,20 @@
 import { Box, Button, Container, IconButton, Paper, Typography } from '@mui/material';
-import { NavLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import styles from './Navbar.module.css';
-// import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import styles from './Navbar.module.css';
 
-const pages = [['Who we are'], ['Services ans benefits'], ['Whom it is needed for'], ['Contact us']]
+const pages = [['Who we are'], ['Services and benefits'], ['Whom it is needed for'], ['Contact us']];
 
 function Navbar() {
+  const router = useRouter(); // Next.js router to handle active link
+
   return (
     <Paper elevation={3}>
       <AppBar
+        position='static'
         sx={{
           backgroundColor: 'primary.light',
         }}
@@ -23,27 +26,25 @@ function Navbar() {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              // onClick={handleOpenNavMenu}
               color="inherit"
               sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-start' }}
             >
               <MenuIcon />
             </IconButton>
             <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            // href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
+              variant="h6"
+              noWrap
+              component="a"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
               My Navbar
             </Typography>
             <Box
@@ -52,35 +53,31 @@ function Navbar() {
                 display: {
                   xs: 'none',
                   md: 'flex',
-                }
+                },
               }}
             >
-              <NavLink
-              to="/"
-
-              className={({ isActive }) => (isActive ? `${styles.active}` : `${styles.inactive}`)}
-            >
+              {/* Using Link from next/link for Next.js navigation */}
+              <Link href="/" passHref>
                 <Button
-                >
-                  Login
-                </Button>
-              
-            </NavLink>
-            <NavLink
-              to="/services"
-              className={({ isActive }) => (isActive ? `${styles.active}` : `${styles.inactive}`)}
-            >
-                <Button
+                  className={router.pathname === '/' ? styles.active : styles.inactive}
                   sx={{
-                    color: 'white',                   
+                    color: router.pathname === '/' ? 'white' : 'inherit',
+                  }}
+                >
+                  Home
+                </Button>
+              </Link>
+              <Link href="/services" passHref>
+                <Button
+                  className={router.pathname === '/services' ? styles.active : styles.inactive}
+                  sx={{
+                    color: router.pathname === '/services' ? 'white' : 'inherit',
                   }}
                 >
                   Services & benefits
                 </Button>
-              
-            </NavLink>
+              </Link>
             </Box>
-            
           </Toolbar>
         </Container>
       </AppBar>
