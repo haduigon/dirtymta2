@@ -17,6 +17,7 @@ function Navbar() {
         position='static'
         sx={{
           backgroundColor: 'primary.light',
+          height: '10vh'
         }}
       >
         <Container>
@@ -45,7 +46,16 @@ function Navbar() {
                 textDecoration: 'none',
               }}
             >
-              <Logo />
+              <Box
+                sx={{
+                  position: {xs: 'absolute', md: 'absolute'},
+                  top: { xs: '10%', md: '10%' },
+                  left: {xs: '65%', md: '5%'},
+                  zIndex: 10,
+                }}
+              >
+                <Logo />
+              </Box>
             </Typography>
             <Box
               sx={{
@@ -53,6 +63,7 @@ function Navbar() {
                 display: {
                   xs: 'none',
                   md: 'flex',
+                  justifyContent: 'center'
                 },
               }}
             >
@@ -73,26 +84,6 @@ function Navbar() {
                 </Button>
               </Link>
               ))}
-              {/* <Link href="/" passHref className={router.pathname === '/' ? styles.active : styles.inactive}>
-                <Button
-                  
-                  sx={{
-                    color: router.pathname === '/' ? 'white' : 'inherit',
-                  }}
-                >
-                  Home
-                </Button>
-              </Link>
-              <Link href="/services" passHref className={router.pathname === '/services' ? styles.active : styles.inactive}>
-                <Button
-                  
-                  sx={{
-                    color: router.pathname === '/services' ? 'white' : 'inherit',
-                  }}
-                >
-                  Services & benefits
-                </Button>
-              </Link> */}
             </Box>
           </Toolbar>
         </Container>

@@ -1,6 +1,5 @@
 import styles from './Logo.module.css';
 import logo from '../../assets/img/dirtymta2.png';
-import Image from 'next/image';
 
 const Logo = () => {
   return (
