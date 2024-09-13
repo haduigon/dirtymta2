@@ -74,10 +74,16 @@ function Navbar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+                '& .MuiPaper-root': {
+                  backgroundColor: 'primary.light',
+                width: '100%'  
+               },
+              }}
             >
               {pages.map((page) => (
-                <MenuItem onClick={() => handleMobileMenuClick(page[1])}>
+                <MenuItem onClick={() => handleMobileMenuClick(page[1])} key={page[1]}>
                   <Typography sx={{ textAlign: 'center' }}>{page[0]}</Typography>
                 </MenuItem>
               ))}

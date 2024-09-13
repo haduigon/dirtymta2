@@ -1,10 +1,9 @@
 import React from 'react';
 import { Typography, Container } from '@mui/material';
+import PagePattern from '@/components/PagePattern';
 
 export default function Home() {
   return (
-    <Container>
-      <Typography variant="h4">Welcome to the Home Page</Typography>
-    </Container>
+    <PagePattern content='Welcome to the Home Page' />
   );
 }
