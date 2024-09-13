@@ -1,0 +1,9 @@
+.active>button {
+  color: lightgray;
+  /* background-color: brown; */
+}
+
+.inactive>button {
+  color: white;
+  /* background-color: blue; */
+}
