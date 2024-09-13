@@ -7,9 +7,36 @@ import { useRouter } from 'next/router';
 import styles from './Navbar.module.css';
 import { pages } from '../../data/pages';
 import Logo from '../Logo';
+import { useState } from 'react';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
 
 function Navbar() {
   const router = useRouter();
+
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  // const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  }
+  
+  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElUser(event.currentTarget);
+  // }
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  }
+
+  const handleMobileMenuClick = (pagePath: string) => {
+    router.push(pagePath);
+    setAnchorElNav(null); // Close the mobile menu after navigation
+  };
+  
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // }
 
   return (
     <Paper elevation={3}>
@@ -29,9 +56,32 @@ function Navbar() {
               aria-haspopup="true"
               color="inherit"
               sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-start' }}
+              onClick={handleOpenNavMenu}
             >
               <MenuIcon />
             </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{ display: { xs: 'block', md: 'none' } }}
+            >
+              {pages.map((page) => (
+                <MenuItem onClick={() => handleMobileMenuClick(page[1])}>
+                  <Typography sx={{ textAlign: 'center' }}>{page[0]}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
             <Typography
               variant="h6"
               noWrap
