@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { SetStateAction, useEffect, useState } from 'react';
 import { Typography, Container, Paper, Box } from '@mui/material';
-import { IconBaseProps } from 'react-icons';
-import {iconsLink} from '../../data/iconsArray';
+import { IconBaseProps, IconType } from 'react-icons';
+import { iconsLink } from '../../data/iconsArray';
 
 
 type Props = {
@@ -15,7 +15,14 @@ type Props = {
   }[];
 }
 
-function shuffle(array: any[]) {
+type Icon = {
+   component: React.ComponentType<IconBaseProps>,
+   size: number,
+    color: string,
+    id: number,
+}
+
+function shuffle(array: Icon[]) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -28,7 +35,7 @@ function PagePattern({ name, content }: Props): JSX.Element {
 
   useEffect(() => {
     const shfld = shuffle(iconsLink)
-    setRandomIcons(shfld);
+    setRandomIcons(shfld as SetStateAction<{ component: IconType; size: number; color: string; id: number; }[]>);
   }, []);
 
   return (
