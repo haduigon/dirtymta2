@@ -11,14 +11,17 @@ import { MdAlternateEmail, MdMarkEmailRead, MdEuro, MdOutlineTextsms } from "rea
 import { SiGmail } from "react-icons/si";
 import { LuDollarSign } from "react-icons/lu";
 import { IoLogoBitcoin } from "react-icons/io";
+import { PiCrown } from "react-icons/pi";
+import { IconBaseProps } from 'react-icons';
 
 
 type Props = {
   content?: string | React.ReactNode,
   name?: string,
+  icons?: React.ComponentType<IconBaseProps>[];
 }
 
-function PagePattern({ name, content }: Props): JSX.Element {
+function PagePattern({ name, content, icons }: Props): JSX.Element {
   return (
     <Container
       sx={{
@@ -40,9 +43,14 @@ function PagePattern({ name, content }: Props): JSX.Element {
           sx={{
             display: 'flex',
             margin: '10%',
+            justifyContent: 'space-between'
           }}
         >
-          <Box>
+          <Box
+            sx={{
+              // marginRight: '5%'
+            }}
+          >
             <AiFillMessage size={38} color='lightblue' />
           </Box>
 
@@ -92,7 +100,7 @@ function PagePattern({ name, content }: Props): JSX.Element {
               alignItems: 'center'
             }}
           >
-            <SiGmail size={40} color='darkyellow' />
+            <SiGmail size={38} color='darkyellow' />
           </Box>
           
           <Box
@@ -110,7 +118,7 @@ function PagePattern({ name, content }: Props): JSX.Element {
               alignItems: 'center'
             }}
           >
-            <MdEuro size={40} color='blue' />
+            <MdEuro size={38} color='blue' />
           </Box>
           
           <Box
@@ -129,6 +137,15 @@ function PagePattern({ name, content }: Props): JSX.Element {
             }}
           >
             <MdOutlineTextsms size={40} color='purple' />
+          </Box>
+          
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            <PiCrown size={40} color='orange' />
           </Box>
 
 
