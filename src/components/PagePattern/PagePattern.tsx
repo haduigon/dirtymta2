@@ -50,9 +50,12 @@ function PagePattern({ name, content }: Props): JSX.Element {
         elevation={3}
         sx={{
           minHeight: '92vh',
+          maxHeight: '92vh',
           width: '95vw',
           position: 'fixed',
-          top: 50
+          top: 50,
+          overflowY: 'auto',
+          overflowX: 'hidden'
         }}
       >
         <Box
@@ -70,7 +73,7 @@ function PagePattern({ name, content }: Props): JSX.Element {
                 sx={{
                   display: {
                     xs: indx < 8 ? 'none': 'flex',
-                    sm: indx < 8 ? 'none': 'flex',
+                    sm: indx < 6 ? 'none': 'flex',
                     md: 'flex'
                   },
                   alignItems: 'center',
