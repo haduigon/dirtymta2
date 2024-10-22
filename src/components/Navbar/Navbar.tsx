@@ -51,7 +51,7 @@ function Navbar() {
           <Toolbar>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="open navigation menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               color="inherit"
