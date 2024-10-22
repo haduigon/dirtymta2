@@ -44,6 +44,8 @@ function PagePattern({ name, content }: Props): JSX.Element {
         display: 'flex',
         justifyContent: 'center',
       }}
+      role='main'
+      aria-label={`Page content for ${name}`}
     >
       <Paper
         elevation={3}
@@ -56,6 +58,8 @@ function PagePattern({ name, content }: Props): JSX.Element {
           overflowY: 'auto',
           overflowX: 'hidden'
         }}
+        role='region'
+        aria-labelledby='page-header'
       >
         <Box
           sx={{
@@ -78,6 +82,8 @@ function PagePattern({ name, content }: Props): JSX.Element {
                   alignItems: 'center',
                 }}
                 key={icon.id}
+                role='group'
+                aria-label='Icon representation'
           >
             <IconComponent size={icon.size} color={icon.color} />
           </Box>
@@ -91,6 +97,7 @@ function PagePattern({ name, content }: Props): JSX.Element {
             backgroundColor: 'yellow'
           }}
           variant="h6"
+          tabIndex={0}
         >
           {name}
         </Typography>
@@ -98,6 +105,8 @@ function PagePattern({ name, content }: Props): JSX.Element {
           sx={{
             margin: '10%',
           }}
+          tabIndex={0}
+          aria-label='Page content'
         >
           {content}
         </Typography>
