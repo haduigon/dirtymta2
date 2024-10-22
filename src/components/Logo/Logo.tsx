@@ -13,7 +13,14 @@ const Logo = () => {
           <div className={styles.logo1} aria-hidden='true'>Dirty</div>
         <div className={styles.logo2} aria-hidden='true'>MTA</div>
         </div>
-        <div className={styles.logoImage}><Image src={logo.src} alt="Dirty MTA logo" className={styles.logoImage}/></div>
+      <div className={styles.logoImage}>
+        <Image
+          src={logo.src}
+          alt="Dirty MTA logo"
+          className={styles.logoImage}
+          width={40}
+          height={40}
+        /></div>
       </div>
   )
 }
