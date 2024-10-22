@@ -83,7 +83,12 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem onClick={() => handleMobileMenuClick(page[1])} key={page[1]}>
+                <MenuItem 
+                  onClick={() => handleMobileMenuClick(page[1])} 
+                  key={page[1]}
+                  aria-label={`Navigate to ${page[0]}`}
+                  tabIndex={0}
+                >
                   <Typography sx={{ textAlign: 'center' }}>{page[0]}</Typography>
                 </MenuItem>
               ))}
@@ -101,6 +106,7 @@ function Navbar() {
                 color: 'inherit',
                 textDecoration: 'none',
               }}
+              aria-label='logo'
             >
               <Box
                 sx={{
@@ -122,6 +128,8 @@ function Navbar() {
                   justifyContent: 'center'
                 },
               }}
+              role='navigation'
+              aria-label='primary navigation'
             >
               {pages.map((page) => (
                 <Link
@@ -129,12 +137,15 @@ function Navbar() {
                   passHref
                   className={router.pathname === page[1] ? styles.active : styles.inactive}
                   key={page[1]}
+                  aria-current={router.pathname === page[1] ? 'page' : undefined}
                 >
                 <Button
                   
                   sx={{
                     color: router.pathname === page[1] ? 'white' : 'inherit',
-                  }}
+                    }}
+                    aria-label={`Navigate to ${page[0]}`}
+                    tabIndex={0}
                 >
                   {page[0]}
                 </Button>

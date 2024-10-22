@@ -3,7 +3,6 @@ import { Typography, Container, Paper, Box } from '@mui/material';
 import { IconBaseProps, IconType } from 'react-icons';
 import { iconsLink } from '../../data/iconsArray';
 
-
 type Props = {
   content?: string | React.ReactNode,
   name?: string,

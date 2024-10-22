@@ -3,6 +3,6 @@ import PagePattern from '@/components/PagePattern';
 
 export default function Services() {
   return (
-    <PagePattern content='Contact us'/ >
+    <PagePattern content='Contact us' />
   );
 }
