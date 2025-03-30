@@ -21,7 +21,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
     try {
       const mailOptions = {
         from: process.env.EMAIL_SENDER,
-        to: process.env.EMAIL_RECEIVER1,
+        to: [process.env.EMAIL_RECEIVER1 as string, process.env.EMAIL_RECEIVER2 as string],
         subject: `Email from ${name}`,
         text: message
       };
