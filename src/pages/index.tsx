@@ -1,9 +1,9 @@
 import React from 'react';
 import PagePattern from '@/components/PagePattern';
-import { aboutText2 } from '@/data/pages';
+import { indexText } from '@/assets/text/text';
 
 export default function Home() {
   return (
-    <PagePattern content={aboutText2} name='Who we are'/>
+    <PagePattern content={indexText} name='Who we are'/>
   );
 }

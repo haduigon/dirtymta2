@@ -5,7 +5,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
   console.log('request');
   
   if (request.method === 'POST') {
-    const { name, message } = request.body;
+    const { name='DirtyMTA server', message } = request.body;
 
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
@@ -13,15 +13,15 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
       port: 465,
       secure: true,
       auth: {
-        user: 'haduigon@gmail.com',
-        pass: 'dmwm jgzv eovf xzpt',
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
       }
     });
 
     try {
       const mailOptions = {
-        from: 'haduigon@gmail.com',
-        to: 'igor.khlyupin@gmail.com',
+        from: process.env.EMAIL_SENDER,
+        to: process.env.EMAIL_RECEIVER1,
         subject: `Email from ${name}`,
         text: message
       };

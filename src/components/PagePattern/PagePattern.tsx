@@ -107,7 +107,8 @@ function PagePattern({ name, content = '' }: Props): JSX.Element {
           <FormControl>
             <FormHelperText sx={{
               marginLeft: { md: 0, sm: 0 },
-              fontSize: 18
+              fontSize: 18,
+              whiteSpace: 'pre-line'
             }}>
               {/* <Typography
                 // variant="h6"
@@ -116,7 +117,10 @@ function PagePattern({ name, content = '' }: Props): JSX.Element {
                 tabIndex={0}
                 aria-label='Page content'
             > */}
-              {content}
+             
+               {content}
+           
+              
             {/* </Typography> */}
             </FormHelperText>
             
